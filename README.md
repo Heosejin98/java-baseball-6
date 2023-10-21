@@ -53,7 +53,7 @@ BUILD SUCCESSFUL in 0s
 
 [v] 유저 볼 생성 및 검증 - Ball
 
-[] 랜덤 숫자 생성 - Ball Method 
+[] 상대 볼 생성 - Ball Method 
 
 [] 상대방 볼 내 볼 비교 - BaseBallMaster
 

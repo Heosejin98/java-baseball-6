@@ -48,6 +48,21 @@ class BallTest {
         Assertions.assertIterableEquals(ball.getTotalBall(), testCase);
     }
 
+    @Test
+    void 컴퓨터볼_생성_테스트() {
+        //GIVEN
+        List<Integer> testCase = List.of(5, 3, 1);
+
+        //WHEN
+        for (int i = 0; i < 100; i++) {
+            Ball ball = Ball.newComputerBall();
+
+            //THEN
+            Assertions.assertEquals(ball.getTotalBall().size(), testCase.size());
+        }
+
+    }
+
 
 
 }

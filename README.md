@@ -49,17 +49,7 @@ BUILD SUCCESSFUL in 0s
 - 게임을 종료한 후 게임을 다시 시작하거나 완전히 종료할 수 있다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시킨 후 애플리케이션은 종료되어야 한다.
 
-[v] 입력 받기
-
-[v] 유저 볼 생성 및 검증 - Ball
-
-[] 상대 볼 생성 - Ball Method 
-
-[] 상대방 볼 내 볼 비교 - BaseBallMaster
-
-[] 재시작 여부 확인 
-
-[] 결과 출력
+[
 
 클래스
 * 입력 클래스

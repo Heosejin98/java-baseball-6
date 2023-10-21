@@ -14,8 +14,11 @@ public class Application {
             int number = scanner.nextInt();
             BaseBallGameController baseBallGameController = new BaseBallGameController();
             baseBallGameController.BaseBallGameStart(number);
+        } else {
+            throw new IllegalArgumentException();
         }
 
-        throw new IllegalArgumentException();
+        System.out.println("게임 종료");
+
     }
 }

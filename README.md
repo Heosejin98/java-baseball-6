@@ -51,7 +51,7 @@ BUILD SUCCESSFUL in 0s
 
 [v] 입력 받기
 
-[] 볼 검증 - Ball
+[v] 유저 볼 생성 및 검증 - Ball
 
 [] 랜덤 숫자 생성 - Ball Method 
 

@@ -33,7 +33,7 @@ public class Ball {
         return new Ball();
     }
 
-    public static Ball newUserBall(int input) {
+    public static Ball newUserBall(Integer input) {
         return new Ball(input);
     }
 

@@ -1,9 +1,10 @@
 package baseball.model;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BaseBallMaster {
-    private final static int TOTAL_BALL_COUNT = 3;
     private final Ball userBall;
     private final Ball computerBall;
 
@@ -13,14 +14,20 @@ public class BaseBallMaster {
     }
 
     private int getBall() {
-        return (int) userBall.getTotalBall()
-                .stream()
+        int size = userBall.getTotalBall().size();
+
+        List<Integer> strikeExcludeTotalBall = IntStream.range(0, size)
+                .filter(i -> !userBall.getTotalBall().get(i).equals(computerBall.getTotalBall().get(i)))
+                .mapToObj(i -> userBall.getTotalBall().get(i))
+                .toList();
+
+        return (int) strikeExcludeTotalBall.stream()
                 .filter(computerBall.getTotalBall()::contains)
                 .count();
     }
 
     private int getStrike() {
-        int size = userBall.getTotalBall().size() - 1;
+        int size = userBall.getTotalBall().size();
 
         return (int) IntStream.range(0, size)
                 .filter(i -> userBall.getTotalBall().get(i).equals(computerBall.getTotalBall().get(i)))
@@ -35,9 +42,19 @@ public class BaseBallMaster {
         return Score.newScore(ball, strike);
     }
 
+    /**
+     *
+     * @return ture - end / false - 재입력
+     */
     public boolean getGameResult() {
         Score score = calculatorScore();
         System.out.println(score);
-        return score.isEndScore();
+
+        if (score.isEndScore()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            return true;
+        }
+
+        return false;
     }
 }

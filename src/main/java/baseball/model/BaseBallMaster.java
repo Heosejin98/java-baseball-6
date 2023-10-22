@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -14,22 +15,19 @@ public class BaseBallMaster {
     }
 
     private int getBall() {
-        int size = userBall.getTotalBall().size();
-
-        List<Integer> strikeExcludeTotalBall = IntStream.range(0, size)
-                .filter(i -> !userBall.getTotalBall().get(i).equals(computerBall.getTotalBall().get(i)))
-                .mapToObj(i -> userBall.getTotalBall().get(i))
-                .distinct()
-                .toList();
-        List<Integer> strikeExcludeToComputerTalBall = IntStream.range(0, size)
-                .filter(i -> !computerBall.getTotalBall().get(i).equals(userBall.getTotalBall().get(i)))
-                .mapToObj(i -> computerBall.getTotalBall().get(i))
-                .distinct()
-                .toList();
+        Set<Integer> strikeExcludeTotalBall = strikeExcludeTotalBall(userBall, computerBall);
+        Set<Integer> strikeExcludeToComputerTalBall = strikeExcludeTotalBall(computerBall, userBall);
 
         return (int) strikeExcludeTotalBall.stream()
                 .filter(strikeExcludeToComputerTalBall::contains)
                 .count();
+    }
+
+    private Set<Integer> strikeExcludeTotalBall(Ball destination, Ball source) {
+        return IntStream.range(0, 3)
+                .filter(i -> !userBall.getTotalBall().get(i).equals(computerBall.getTotalBall().get(i)))
+                .mapToObj(i -> userBall.getTotalBall().get(i))
+                .collect(Collectors.toSet());
     }
 
     private int getStrike() {

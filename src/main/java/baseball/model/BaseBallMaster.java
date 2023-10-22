@@ -25,8 +25,8 @@ public class BaseBallMaster {
 
     private Set<Integer> strikeExcludeTotalBall(Ball destination, Ball source) {
         return IntStream.range(0, 3)
-                .filter(i -> !userBall.getTotalBall().get(i).equals(computerBall.getTotalBall().get(i)))
-                .mapToObj(i -> userBall.getTotalBall().get(i))
+                .filter(i -> !destination.getTotalBall().get(i).equals(source.getTotalBall().get(i)))
+                .mapToObj(i -> destination.getTotalBall().get(i))
                 .collect(Collectors.toSet());
     }
 

@@ -21,7 +21,7 @@ public class Ball {
     }
 
     private Ball() {
-        Set<Integer> randomBall = new HashSet<>();
+        List<Integer> randomBall = new ArrayList<>();
         while (randomBall.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
             randomBall.add(randomNumber);

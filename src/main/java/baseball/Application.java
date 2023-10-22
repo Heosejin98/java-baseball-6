@@ -9,18 +9,16 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("숫자 야구 게임을 시작합니다.");
-
         BaseBallGameController baseBallGameController = new BaseBallGameController();
         Ball computerBall = Ball.newComputerBall();
+        boolean isGameRunning = true;
 
-        while (true) {
-            EndType endType = baseBallGameController.BaseBallGameStart(computerBall); //게임 계속 진행
+        while (isGameRunning) {
+            EndType endType = baseBallGameController.BaseBallGameStart(computerBall);
 
-            if (endType.equals(EndType.END)) {
-                break;
-            }
-
-            if (endType.equals(EndType.RESTART)) {
+            if (endType == EndType.END) {
+                isGameRunning = false;
+            } else if (endType == EndType.RESTART) {
                 computerBall = Ball.newComputerBall();
             }
         }

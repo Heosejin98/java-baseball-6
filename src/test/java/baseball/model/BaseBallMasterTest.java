@@ -65,4 +65,32 @@ class BaseBallMasterTest {
         //THEN
         assertFalse(gameResult);
     }
+
+    @Test
+    void 원볼원스_테스트23() {
+        //GIVEN
+        Ball userBall = Ball.newUserBall(597);
+        Ball comBall = Ball.newUserBall(589);
+        BaseBallMaster baseBallMaster = new BaseBallMaster(userBall, comBall);
+
+        //WHEN
+        boolean gameResult = baseBallMaster.getGameResult();
+
+        //THEN
+        assertFalse(gameResult);
+    }
+
+    @Test
+    void 원볼원스_테스트3() {
+        //GIVEN
+        Ball userBall = Ball.newUserBall(333);
+        Ball comBall = Ball.newUserBall(345);
+        BaseBallMaster baseBallMaster = new BaseBallMaster(userBall, comBall);
+
+        //WHEN
+        boolean gameResult = baseBallMaster.getGameResult();
+
+        //THEN
+        assertFalse(gameResult);
+    }
 }

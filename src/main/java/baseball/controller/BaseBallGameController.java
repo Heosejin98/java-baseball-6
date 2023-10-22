@@ -3,26 +3,21 @@ package baseball.controller;
 import baseball.model.Ball;
 import baseball.model.BaseBallMaster;
 import baseball.util.InputReader;
-
-import java.io.BufferedReader;
+import baseball.util.type.EndType;
 
 public class BaseBallGameController {
 
-    public void BaseBallGameStart(boolean isEnd, Ball computerBall, BufferedReader br) {
-        if (isEnd) {
-            return;
-        }
 
-        Ball userBall = Ball.newUserBall(InputReader.getInputBall(br));
+
+    public EndType BaseBallGameStart(Ball computerBall) {
+        Ball userBall = Ball.newUserBall(InputReader.getInputBall());
         BaseBallMaster baseBallMaster = new BaseBallMaster(userBall, computerBall);
 
         if (baseBallMaster.getGameResult()) { // 게임 종료 시
-            boolean isInputEnd = InputReader.getInputContinue(br);
-            Ball newComputerBall = Ball.newComputerBall();
-            BaseBallGameStart(isInputEnd, newComputerBall, br);
+            return InputReader.getInputContinue();
         }
 
-        BaseBallGameStart(false, computerBall, br); // 게임 재시작
+        return EndType.ONE_MORE;
     }
 
 }

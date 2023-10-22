@@ -19,10 +19,16 @@ public class BaseBallMaster {
         List<Integer> strikeExcludeTotalBall = IntStream.range(0, size)
                 .filter(i -> !userBall.getTotalBall().get(i).equals(computerBall.getTotalBall().get(i)))
                 .mapToObj(i -> userBall.getTotalBall().get(i))
+                .distinct()
+                .toList();
+        List<Integer> strikeExcludeToComputerTalBall = IntStream.range(0, size)
+                .filter(i -> !computerBall.getTotalBall().get(i).equals(userBall.getTotalBall().get(i)))
+                .mapToObj(i -> computerBall.getTotalBall().get(i))
+                .distinct()
                 .toList();
 
         return (int) strikeExcludeTotalBall.stream()
-                .filter(computerBall.getTotalBall()::contains)
+                .filter(strikeExcludeToComputerTalBall::contains)
                 .count();
     }
 
